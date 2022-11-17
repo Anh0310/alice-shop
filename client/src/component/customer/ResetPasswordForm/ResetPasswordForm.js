@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Hidden,
   InputAdornment,
   TextField,
@@ -15,6 +14,7 @@ import { useForm } from 'react-hook-form'
 import { resetPassword } from '../../../redux/slices/userSlice'
 import { useDispatch } from 'react-redux'
 import { unwrapResult } from '@reduxjs/toolkit'
+import Button from '../Button/Button'
 
 const ResetPasswordForm = () => {
   const classes = useStyles()

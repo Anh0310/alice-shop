@@ -36,9 +36,6 @@ exports.getOrder = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
 
-    // if(!order){
-    //     const error = new Error("")
-    // }
 
     res.status(200).json({ order })
   } catch (error) {

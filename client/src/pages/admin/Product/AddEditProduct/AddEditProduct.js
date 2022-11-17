@@ -310,7 +310,7 @@ const AddEditProduct = () => {
               select
               variant="outlined"
               {...register('category')}
-              defaultValue={product?.category._id}
+              defaultValue={product?.category?._id}
               required
             >
               {categories?.map((category) => {

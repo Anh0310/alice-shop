@@ -48,9 +48,15 @@ exports.login = async (req, res, next) => {
       return next(error)
     }
 
-    const { password, ...info } = user._doc
+    const { password, active, ...info } = user._doc
 
     if (checkPassword(password, req.body.password)) {
+      if (!active) {
+        const error = new Error('This account is inactive')
+        error.statusCode = 400
+        return next(error)
+      }
+
       const token = createToken({ id: user._id, isAdmin: user.isAdmin })
       res.status(200).json({ token, user: info })
     } else {

@@ -11,32 +11,45 @@ import {
   TableRow,
   TextField,
   Typography,
+  Switch,
 } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import { blue } from '@material-ui/core/colors'
 import TablePagination from '@material-ui/core/TablePagination'
-import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useEffect, useState } from 'react'
-import { BiPencil, BiSearchAlt2, BiX } from 'react-icons/bi'
+import { BiPencil, BiSearchAlt2 } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
 import AdminLayout from '../../../component/admin/AdminLayout/AdminLayout'
 import {
-  deleteUser,
   getAllUser,
   setPage,
+  updateUserDashboard,
 } from '../../../redux/slices/userSlice'
 import AddEditUser from './AddEditUser/AddEditUser'
 import { useStyles } from './styles'
-import useModal from '../../../hooks/useModal'
-import DeleteModal from '../../../component/DeleteModal/DeleteModal'
+import { unwrapResult } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify'
+
+const BlueSwitch = withStyles({
+  switchBase: {
+    color: blue[300],
+    '&$checked': {
+      color: blue[600],
+    },
+    '&$checked + $track': {
+      backgroundColor: blue[600],
+    },
+  },
+  checked: {},
+  track: {
+    background: blue[100],
+  },
+})(Switch)
 
 const User = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  const { open, handleClose, handleOpen } = useModal()
-  const [deletedUserId, setDeletedUserId] = useState('')
-
-  const currentUser = useSelector((state) => state.user.user)
   const users = useSelector((state) => state.user.users)
 
   const limit = useSelector((state) => state.user.limit)
@@ -72,13 +85,20 @@ const User = () => {
     dispatch(getAllUser({ currentPage: newPage, limit }))
   }
 
-  const handleDeleteUser = (id) => {
-    const action = deleteUser(id)
+  const handleUpdateUser = (checked, user) => {
+    const newUser = {
+      fullName: user.fullName,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      _id: user._id,
+      active: checked,
+      isInAdminPage: true,
+    }
+    const action = updateUserDashboard(newUser)
     dispatch(action)
       .then(unwrapResult)
       .then(() => {
-        handleClose()
-        toast('Delete user successfully!', {
+        toast('Update user successfully!', {
           position: 'bottom-center',
           autoClose: 3000,
           hideProgressBar: false,
@@ -89,6 +109,7 @@ const User = () => {
           type: 'success',
         })
       })
+      .catch((error) => console.log(error))
   }
 
   useEffect(() => {
@@ -143,6 +164,9 @@ const User = () => {
                       Updated Date
                     </TableCell>
                     <TableCell align="center" className={classes.tableHead}>
+                      Active
+                    </TableCell>
+                    <TableCell align="center" className={classes.tableHead}>
                       Actions
                     </TableCell>
                   </TableRow>
@@ -162,6 +186,14 @@ const User = () => {
                           {new Date(user.updatedAt).toLocaleString()}
                         </TableCell>
                         <TableCell align="center">
+                          <BlueSwitch
+                            onChange={(e) =>
+                              handleUpdateUser(e.target.checked, user)
+                            }
+                            checked={!!user.active}
+                          />
+                        </TableCell>
+                        <TableCell align="center">
                           <BiPencil
                             style={{
                               cursor: 'pointer',
@@ -170,22 +202,6 @@ const User = () => {
                             }}
                             onClick={() => {
                               handleOpenEditModal(user)
-                            }}
-                          />
-                          <BiX
-                            style={{
-                              cursor: 'pointer',
-                              fontSize: 20,
-                              visibility:
-                                currentUser?._id !== user._id
-                                  ? 'visible'
-                                  : 'hidden',
-                            }}
-                            onClick={() => {
-                              if (currentUser?._id !== user._id) {
-                                setDeletedUserId(user._id)
-                                handleOpen()
-                              }
                             }}
                           />
                         </TableCell>
@@ -222,11 +238,6 @@ const User = () => {
           </Box>
         )}
       </form>
-      <DeleteModal
-        open={open}
-        handleClose={handleClose}
-        handleSubmit={() => handleDeleteUser(deletedUserId)}
-      />
     </AdminLayout>
   )
 }

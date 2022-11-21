@@ -16,6 +16,7 @@ const userSchema = Schema(
     },
     email: { type: String, required: true, unique: true, trim: true },
     isAdmin: { type: Boolean, default: false },
+    active: { type: Boolean, default: true },
     cart: [],
   },
   { timestamps: true },

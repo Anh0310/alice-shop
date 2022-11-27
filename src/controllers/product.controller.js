@@ -17,24 +17,63 @@ exports.getAllProduct = async (req, res, next) => {
           },
         }
       : {}
+    const category = req.query.category
     // Sort and order
     const orderBy = req.query.order === 'asc' ? 1 : -1
     const sortBy = req.query.sortBy || 'createdAt'
 
-    const products = await Product.find({
-      ...keyword,
-    })
-      .skip(skip)
-      .limit(limit)
-      .sort([[sortBy, orderBy]])
-      .populate('category')
-      .populate('size')
-    res.status(200).json({
-      products,
-      limit: Number(limit),
-      currentPage: Number(page),
-      totalItems,
-    })
+    if (Object.keys(keyword).length !== 0 && !category) {
+      const products = await Product.find({
+        ...keyword,
+      })
+        .skip(skip)
+        .limit(limit)
+        .sort([[sortBy, orderBy]])
+        .populate('category')
+        .populate('size')
+
+      res.status(200).json({
+        products,
+        limit: Number(limit),
+        currentPage: Number(page),
+        totalItems,
+      })
+    } else if (
+      (Object.keys(keyword).length !== 0 && category) ||
+      (Object.keys(keyword).length === 0 && category)
+    ) {
+      const products = await Product.find({
+        ...keyword,
+        category: category,
+      })
+        .skip(skip)
+        .limit(limit)
+        .sort([[sortBy, orderBy]])
+        .populate('category')
+        .populate('size')
+
+      res.status(200).json({
+        products,
+        limit: Number(limit),
+        currentPage: Number(page),
+        totalItems,
+      })
+    } else {
+      const products = await Product.find({
+        ...keyword,
+      })
+        .skip(skip)
+        .limit(limit)
+        .sort([[sortBy, orderBy]])
+        .populate('category')
+        .populate('size')
+      res.status(200).json({
+        products,
+        limit: Number(limit),
+        currentPage: Number(page),
+        totalItems,
+      })
+    }
   } catch (error) {
     next(error)
   }

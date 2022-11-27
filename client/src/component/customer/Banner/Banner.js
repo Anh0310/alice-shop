@@ -37,30 +37,6 @@ const Banner = () => {
       autoPlaySpeed={2000}
       infinite={true}
     >
-      <Box className={`${classes.slide} ${classes.slide1}`}>
-        <Typography component="h1" className={classes.heading}>
-          Live For Fashion
-        </Typography>
-        <Typography component="h3" className={classes.subHeading}>
-          Quality Matters
-        </Typography>
-        <Button onClick={goShop} className={classes.action}>
-          Shop now
-        </Button>
-      </Box>
-
-      <Box className={`${classes.slide} ${classes.slide2}`}>
-        <Typography component="h1" className={classes.heading}>
-          Find The Best Outfit
-        </Typography>
-        <Typography component="h3" className={classes.subHeading}>
-          With 30% Off
-        </Typography>
-        <Button onClick={goShop} className={classes.action}>
-          Shop now
-        </Button>
-      </Box>
-
       <Box className={`${classes.slide} ${classes.slide3}`}>
         <Typography component="h1" className={classes.heading}>
           Get Your Style

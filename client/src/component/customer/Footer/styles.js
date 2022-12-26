@@ -1,12 +1,11 @@
 import { makeStyles } from '@material-ui/styles'
-import { GUTTER } from '../../../constants/common'
 
 const useStyles = makeStyles((theme) => ({
   footer: {
     borderTop: '1px solid black',
     backgroundColor: 'white',
     padding: 4,
-    paddingTop: GUTTER,
+    paddingTop: 24,
   },
   list: {
     display: 'flex',

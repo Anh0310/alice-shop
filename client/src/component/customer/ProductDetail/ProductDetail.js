@@ -15,7 +15,11 @@ import { getProduct } from '../../../redux/slices/productSlice'
 import CustomerLayout from '../CustomerLayout/CustomerLayout'
 import Button from '../Button/Button'
 import { useStyles } from './styles'
-import { formatPrice } from '../../../utils/format'
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+})
 
 const override = css`
   display: block;
@@ -193,7 +197,7 @@ const ProductDetail = () => {
                   {product.name}
                 </Typography>
                 <Typography component="subtitle1" className={classes.price}>
-                  {formatPrice(product.price)}
+                  {formatter.format(+product.price)}
                 </Typography>
                 <Divider style={{ margin: '16px 0' }} />
                 <Typography component="p" className={classes.desc}>

@@ -1,12 +1,12 @@
 require('dotenv').config()
 const express = require('express')
+const mongoose = require('mongoose')
 const morgan = require('morgan')
 const path = require('path')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
 const { errorHandler } = require('./src/middlewares/errorHandler')
-const { connectDB } = require('./src/configs/mongodb')
 const authRouter = require('./src/routes/auth.route')
 const userRouter = require('./src/routes/user.route')
 const categoryRouter = require('./src/routes/category.route')
@@ -15,6 +15,15 @@ const productRouter = require('./src/routes/product.route')
 const orderRouter = require('./src/routes/order.route')
 const paymentRouter = require('./src/routes/payment.route')
 const uploadRouter = require('./src/routes/upload.route')
+
+const connectDB = async (req, res) => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL)
+    console.log('Connected to MongoDB')
+  } catch (error) {
+    console.log('Error: ', error)
+  }
+}
 
 const app = express()
 connectDB()

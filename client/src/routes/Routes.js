@@ -2,19 +2,19 @@ import React, { lazy, Suspense } from 'react'
 import { Switch, useLocation } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import '../App.css'
-import PrivateRoute from '../component/PrivateRoute/PrivateRoute'
-import PublicRoute from '../component/PublicRoute/PublicRoute'
+import PrivateRoute from '../component/PrivateRoute'
+import PublicRoute from '../component/PublicRoute'
 
 // Admin pages
-const HomeAdmin = lazy(() => import('../pages/admin/Home/Home'))
-const UserAdmin = lazy(() => import('../pages/admin/User/User'))
-const CategoryAdmin = lazy(() => import('../pages/admin/Category/Category'))
-const SizeAdmin = lazy(() => import('../pages/admin/Size/Size'))
-const ProductAdmin = lazy(() => import('../pages/admin/Product/Product'))
+const HomeAdmin = lazy(() => import('../component/admin/Home'))
+const UserAdmin = lazy(() => import('../component/admin/User'))
+const CategoryAdmin = lazy(() => import('../component/admin/Category'))
+const SizeAdmin = lazy(() => import('../component/admin/Size'))
+const ProductAdmin = lazy(() => import('../component/admin/Product'))
 const AddEditProductAdmin = lazy(() =>
-  import('../pages/admin/Product/AddEditProduct/AddEditProduct'),
+  import('../component/admin/AddEditProduct'),
 )
-const OrderAdmin = lazy(() => import('../pages/admin/Order/Order'))
+const OrderAdmin = lazy(() => import('../component/admin/Order'))
 // Customer pages
 const Home = lazy(() => import('../pages/customer/Home/Home'))
 const Login = lazy(() => import('../pages/Login/Login'))

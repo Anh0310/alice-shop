@@ -3,25 +3,24 @@ import bgBanner from '../../../assets/images/hero-1.jpg'
 import bgBanner2 from '../../../assets/images/hero-2.jpg'
 import bgBanner3 from '../../../assets/images/hero-3.jpg'
 import bgBanner4 from '../../../assets/images/hero-4.jpg'
-import { HEADER_HEIGHT } from '../../../constants/common'
 
 const useStyles = makeStyles((theme) => ({
   banner: {
     position: 'relative',
     width: '100%',
-    height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+    height: `calc(100vh - 90px)`,
     zIndex: 999,
     overflow: 'hidden',
 
     '& .react-multi-carousel-track': {
-      height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+      height: `calc(100vh - 90px)`,
     },
   },
   slide: {
     position: 'absolute',
     content: "''",
     width: '100%',
-    height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+    height: `calc(100vh - 90px)`,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

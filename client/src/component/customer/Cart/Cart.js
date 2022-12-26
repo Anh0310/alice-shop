@@ -24,9 +24,13 @@ import CustomerLayout from '../CustomerLayout/CustomerLayout'
 import Title from '../Title/Title'
 import Button from '../Button/Button'
 import { useStyles } from './styles'
-import { formatPrice } from '../../../utils/format'
 
 const KEY = process.env.REACT_APP_STRIPE_KEY
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+})
 
 const Cart = () => {
   const classes = useStyles()
@@ -205,7 +209,7 @@ const Cart = () => {
                       {product.chooseSize.name}
                     </TableCell>
                     <TableCell align="center">
-                      {formatPrice(product.product.price)}
+                      {formatter.format(+product.product.price)}
                     </TableCell>
                     <TableCell align="center">
                       <Box className={classes.quantity}>
@@ -225,7 +229,9 @@ const Cart = () => {
                       </Box>
                     </TableCell>
                     <TableCell align="center">
-                      {formatPrice(product.quantity * product.product.price)}
+                      {formatter.format(
+                        +product.quantity * +product.product.price,
+                      )}
                     </TableCell>
                     <TableCell align="center">
                       <BiX
@@ -243,7 +249,9 @@ const Cart = () => {
               Continue shopping
             </Button>
             <Box className={classes.checkout}>
-              <Typography variant="h5" style={{ marginRight: 16 }}>Total: {formatPrice(total)}</Typography>
+              <Typography variant="h5" style={{ marginRight: 16 }}>
+                Total: {formatter.format(+total)}
+              </Typography>
 
               <StripeCheckout
                 token={onToken}

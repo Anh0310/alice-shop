@@ -13,10 +13,14 @@ import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllOrder } from '../../../redux/slices/orderSlice'
-import { formatPrice } from '../../../utils/format'
 import CustomerLayout from '../CustomerLayout/CustomerLayout'
 import Title from '../Title/Title'
 import { useStyles } from './styles'
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+})
 
 const Order = () => {
   const classes = useStyles()
@@ -42,16 +46,6 @@ const Order = () => {
     <CustomerLayout>
       <Box className={classes.profile}>
         <Title>Order details</Title>
-        {/* <Box className={classes.searchBar}>
-						<TextField
-							placeholder="Search for order ID"
-							variant="outlined"
-							className={classes.searchField}
-						/>
-						<IconButton className={classes.searchBtn}>
-							<BiSearchAlt2 />
-						</IconButton>
-					</Box> */}
         <TableContainer
           component={Paper}
           elevation="0"
@@ -93,7 +87,7 @@ const Order = () => {
                       {new Date(order.createdAt).toLocaleString()}
                     </TableCell>
                     <TableCell align="center">
-                      {formatPrice(order.totalPrice)}
+                      {formatter.format(+order.totalPrice)}
                     </TableCell>
                     <TableCell align="center">{order.status}</TableCell>
                     <TableCell align="center">

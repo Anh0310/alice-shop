@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import CustomerLayout from '../../component/customer/CustomerLayout/CustomerLayout'
-import RegisterForm from '../../component/RegisterForm/RegisterForm'
+import RegisterForm from '../../component/RegisterForm'
 
 const Register = () => {
   useEffect(() => {

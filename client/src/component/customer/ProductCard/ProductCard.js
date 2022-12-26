@@ -6,10 +6,14 @@ import {
   Typography,
 } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import { formatPrice } from '../../../utils/format'
 import { useStyles } from './styles'
 import CartIconImg from '../../../assets/images/cart.png'
 import HeartIconImg from '../../../assets/images/heart.png'
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+})
 
 const ProductCard = ({ product }) => {
   const classes = useStyles()
@@ -49,7 +53,7 @@ const ProductCard = ({ product }) => {
           className={classes.price}
           onClick={() => handleNavigate(product._id)}
         >
-          {formatPrice(product.price)} USD
+          {formatter.format(+product.price)} USD
         </Box>
       </CardContent>
     </Card>

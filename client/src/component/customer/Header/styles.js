@@ -1,10 +1,9 @@
 import { makeStyles } from '@material-ui/styles'
-import { HEADER_HEIGHT, GUTTER } from '../../../constants/common'
 
 const useStyles = makeStyles((theme) => ({
   header: {
     backgroundColor: 'white',
-    height: HEADER_HEIGHT,
+    height: '95px',
     display: 'flex',
     color: theme.palette.text.primary,
     paddingRight: '0 !important',
@@ -14,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingTop: GUTTER * 1.25,
-    paddingBottom: GUTTER * 1.25,
-    paddingLeft: GUTTER,
-    paddingRight: GUTTER,
+    paddingTop: 24 * 1.25,
+    paddingBottom: 24 * 1.25,
+    paddingLeft: 24,
+    paddingRight: 24,
   },
   logo: {
     width: '20%',
@@ -40,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-between',
-    paddingLeft: GUTTER,
-    paddingRight: GUTTER,
+    paddingLeft: 24,
+    paddingRight: 24,
     paddingBottom: 8,
     paddingTop: 8,
     borderBottom: '1px solid black',

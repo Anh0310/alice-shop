@@ -18,9 +18,63 @@ import { Controller, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
-import { signUp } from '../../../../redux/slices/authSlice'
-import { updateUserDashboard } from '../../../../redux/slices/userSlice'
-import { useStyles } from './styles'
+import { signUp } from '../../redux/slices/authSlice'
+import { updateUserDashboard } from '../../redux/slices/userSlice'
+import { makeStyles } from '@material-ui/styles'
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 12, 8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  input: {
+    marginBottom: 30,
+    '& .MuiInputLabel-outlined': {
+      color: theme.palette.text.primary,
+    },
+  },
+  save: {
+    width: '100%',
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.text.secondary,
+    borderRadius: 0,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.text.secondary,
+    },
+  },
+  radioHeading: {
+    color: theme.palette.text.primary,
+    marginBottom: 10,
+  },
+  radioContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  formControl: {
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  error: {
+    color: '#c74a47',
+    backgroundColor: '#fbe2e2',
+    fontSize: 16,
+    textAlign: 'left',
+    padding: '10px 15px',
+    marginBottom: 20,
+  },
+}))
 
 const schema = yup.object().shape({
   fullName: yup.string().required(),
@@ -83,7 +137,6 @@ const AddEditUser = ({ open, handleClose, user }) => {
       email: user.email,
       isAdmin: value,
       _id: user._id,
-      isInAdminPage: true,
     }
     const action = updateUserDashboard(newUser)
     dispatch(action)

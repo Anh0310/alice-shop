@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/styles'
-import { GUTTER } from '../../../constants/common'
 
 const useStyles = makeStyles((theme) => ({
   shop: {
@@ -15,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'no-wrap',
-    paddingLeft: GUTTER,
-    paddingRight: GUTTER,
+    paddingLeft: 24,
+    paddingRight: 24,
 
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',

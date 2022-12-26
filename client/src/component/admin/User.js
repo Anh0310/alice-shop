@@ -19,7 +19,7 @@ import TablePagination from '@material-ui/core/TablePagination'
 import React, { useEffect, useState } from 'react'
 import { BiPencil, BiSearchAlt2 } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import {
   getAllUser,
   setPage,
@@ -179,7 +179,6 @@ const User = () => {
       isAdmin: user.isAdmin,
       _id: user._id,
       active: checked,
-      isInAdminPage: true,
     }
     const action = updateUserDashboard(newUser)
     dispatch(action)

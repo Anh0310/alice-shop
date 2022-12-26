@@ -20,7 +20,7 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { useParams, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import { getAllCategory } from '../../redux/slices/categorySlice'
 import {
   addProduct,

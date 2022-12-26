@@ -18,7 +18,7 @@ import React, { useEffect, useState } from 'react'
 import { BiPencil, BiSearchAlt2, BiX } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import {
   deleteSize,
   getAllSize,
@@ -26,7 +26,7 @@ import {
 } from '../../redux/slices/sizeSlice'
 import AddEditSize from './AddEditSize'
 import useModal from '../../hooks/useModal'
-import DeleteModal from '../DeleteModal/DeleteModal'
+import DeleteModal from './DeleteModal'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles((theme) => ({

@@ -16,18 +16,18 @@ const AddEditProductAdmin = lazy(() =>
 )
 const OrderAdmin = lazy(() => import('../component/admin/Order'))
 // Customer pages
-const Home = lazy(() => import('../pages/customer/Home/Home'))
-const Login = lazy(() => import('../pages/Login/Login'))
-const Register = lazy(() => import('../pages/Register/Register'))
-const ForgotPassword = lazy(() => import('../pages/ForgotPassword/ForgotPassword'))
-const ResetPassword = lazy(() => import('../pages/ResetPassword/ResetPassword'))
-const Cart = lazy(() => import('../component/customer/Cart/Cart'))
-const Order = lazy(() => import('../component/customer/Order/Order'))
+const Home = lazy(() => import('../component/customer/Home'))
+const Login = lazy(() => import('../component/Login'))
+const Register = lazy(() => import('../component/Register'))
+const ForgotPassword = lazy(() => import('../component/ForgotPassword'))
+const ResetPassword = lazy(() => import('../component/ResetPassword'))
+const Cart = lazy(() => import('../component/customer/Cart'))
+const Order = lazy(() => import('../component/customer/Order'))
 const ProductDetail = lazy(() =>
-  import('../component/customer/ProductDetail/ProductDetail'),
+  import('../component/customer/ProductDetail'),
 )
-const Shop = lazy(() => import('../component/customer/Shop/Shop'))
-const NotFound = lazy(() => import('../pages/customer/NotFound/NotFound'))
+const Shop = lazy(() => import('../component/customer/Shop'))
+const NotFound = lazy(() => import('../component/NotFound'))
 
 const routesApp = [
   {

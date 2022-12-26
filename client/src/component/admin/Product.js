@@ -19,14 +19,14 @@ import { BiPencil, BiSearchAlt2, BiX } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import {
   deleteProduct,
   getAllProduct,
   setPage,
 } from '../../redux/slices/productSlice'
 import useModal from '../../hooks/useModal'
-import DeleteModal from '../DeleteModal/DeleteModal'
+import DeleteModal from './DeleteModal'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles((theme) => ({

@@ -16,7 +16,7 @@ import TablePagination from '@material-ui/core/TablePagination'
 import React, { useEffect, useState } from 'react'
 import { BiPencil, BiSearchAlt2, BiX } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import {
   deleteCategory,
   getAllCategory,
@@ -26,7 +26,7 @@ import AddEditCategory from './AddEditCategory'
 import { toast } from 'react-toastify'
 import { unwrapResult } from '@reduxjs/toolkit'
 import useModal from '../../hooks/useModal'
-import DeleteModal from '../DeleteModal/DeleteModal'
+import DeleteModal from './DeleteModal'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles((theme) => ({

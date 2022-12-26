@@ -15,9 +15,9 @@ import TablePagination from '@material-ui/core/TablePagination'
 import React, { useEffect, useState } from 'react'
 import { BiPencil, BiSearchAlt2 } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import { getAllOrder, setPage } from '../../redux/slices/orderSlice'
-import AddEditOrder from './AddEditOrder'
+import EditOrder from './EditOrder'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -197,7 +197,7 @@ const Order = () => {
                   </TableCell>
                 </TableRow>
               ))}
-              <AddEditOrder
+              <EditOrder
                 open={openEditModal}
                 handleClose={handleCloseEditModal}
                 order={editedOrder}

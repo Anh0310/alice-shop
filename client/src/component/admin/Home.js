@@ -1,6 +1,6 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react'
-import AdminLayout from '../AdminLayout'
+import AdminLayout from './AdminLayout'
 import { makeStyles } from '@material-ui/styles'
 import { Line } from 'react-chartjs-2'
 

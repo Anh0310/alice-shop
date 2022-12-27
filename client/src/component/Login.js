@@ -7,8 +7,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
-import bgLogin from '../assets/images/login1.png'
-import bgLogin2 from '../assets/images/login-2.png'
+import bgLogin from '../assets/images/login.jpg'
 import { BiMailSend, BiLockAlt, BiRightArrowAlt } from 'react-icons/bi'
 import { Link, useHistory } from 'react-router-dom'
 import * as yup from 'yup'
@@ -159,9 +158,7 @@ const Login = () => {
   return (
     <CustomerLayout>
       <Box className={classes.login}>
-        <Hidden mdDown implementation="js">
-          <img src={bgLogin2} alt="login" className={classes.img1} />
-        </Hidden>
+ 
         <Box className={classes.container}>
           <Hidden mdDown implementation="js">
             <Box className={classes.img2Container}>

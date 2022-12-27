@@ -1,11 +1,12 @@
-import { Box, Typography } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import Button from './Button'
 import { makeStyles } from '@material-ui/styles'
-import bgBanner from '../../assets/images/hero-1.jpg'
+import bgBanner1 from '../../assets/images/hero-1.jpg'
+import bgBanner2 from '../../assets/images/hero-2.jpg'
+import bgBanner3 from '../../assets/images/hero-3.jpg'
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -28,13 +29,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     zIndex: 999,
-    backgroundImage: `url(${bgBanner})`,
+    backgroundImage: `url(${bgBanner1})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100% 100%',
     padding: '0 120px',
     [theme.breakpoints.down('md')]: {
       alignItems: 'center',
     },
+  },
+  slide2: {
+    backgroundImage: `url(${bgBanner2})`,
+  },
+  slide3: {
+    backgroundImage: `url(${bgBanner3})`,
   },
   heading: {
     fontSize: 70,
@@ -93,17 +100,9 @@ const Banner = () => {
       autoPlaySpeed={2000}
       infinite={true}
     >
-      <Box className={`${classes.slide} ${classes.slide3}`}>
-        <Typography component="h1" className={classes.heading}>
-          Get Your Style
-        </Typography>
-        <Typography component="h3" className={classes.subHeading}>
-          Comfort For Your Long Day
-        </Typography>
-        <Button onClick={goShop} className={classes.action}>
-          Shop now
-        </Button>
-      </Box>
+      <Box className={`${classes.slide}`}></Box>
+      <Box className={`${classes.slide} ${classes.slide2}`}></Box>
+      <Box className={`${classes.slide} ${classes.slide3}`}></Box>
     </Carousel>
   )
 }

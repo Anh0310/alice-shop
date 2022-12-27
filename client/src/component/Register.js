@@ -9,9 +9,8 @@ import {
 } from '@material-ui/core'
 import { BiMailSend, BiLockAlt, BiUser } from 'react-icons/bi'
 import { Link, useHistory } from 'react-router-dom'
-import bgRes2 from '../assets/images/register-2.png'
-import bgRes1 from '../assets/images/register-1.svg'
-import bgRes3 from '../assets/images/register-3.svg'
+import bgRes1 from '../assets/images/register.jpg'
+import bgRes2 from '../assets/images/register-2.jpg'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -173,9 +172,6 @@ const Register = () => {
   return (
     <CustomerLayout>
       <Box className={classes.login}>
-        <Hidden mdDown implementation="js">
-          <img src={bgRes2} alt="login" className={classes.img1} />
-        </Hidden>
         <Box className={classes.container}>
           <Hidden mdDown implementation="js">
             <Box className={classes.img2Container}>
@@ -186,7 +182,7 @@ const Register = () => {
             className={classes.form}
             onSubmit={handleSubmit(handleRegister)}
           >
-            <img src={bgRes3} alt="avatar" className={classes.avatar} />
+            <img src={bgRes2} alt="avatar" className={classes.avatar} />
             {errors.confirmPassword && (
               <Typography component="p" className={classes.error}>
                 {errors.confirmPassword.message}
